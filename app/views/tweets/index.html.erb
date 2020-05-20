@@ -1,0 +1,15 @@
+
+
+<div class="card mt-5">
+  <div class="card-header">
+    My Tweets <%= link_to 'New Tweet', new_tweet_path, class: "float-sm-right btn btn-primary" %>
+  </div>
+  <% @tweets.each do |tweet| %>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p><%= tweet.name %><%= link_to 'Edit', edit_tweet_path(tweet), class: "ml-5"%> |<%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' }, class: "ml-2" %></p>
+        <footer class="blockquote-footer"><cite title="Source Title"><%= tweet.user.email %></cite></footer>
+      </blockquote>
+    </div>
+  <% end %>  
+</div>

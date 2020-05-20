@@ -1,0 +1,32 @@
+
+<div class="container h-100">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-10 col-md-8 col-lg-6">
+      <%= form_with(model: tweet, local: true, html: {class: "form-horizontal center"}) do |form| %>
+      <!-- Input fields -->
+      <% if tweet.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+
+        <ul>
+          <% tweet.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <div class="form-group">
+        <%= form.hidden_field :user_id, value: tweet.new_record? ? current_user.id : tweet.user_id, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_area :name, class: "form-control" %>
+      </div>
+
+      <div class="actions">
+        <input type="submit" name="" value="Submit" class= "btn btn-default btn-primary" >
+      </div> 
+      <% end %>
+    </div>
+  </div>
